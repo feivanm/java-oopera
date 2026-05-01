@@ -61,6 +61,7 @@ public class Show {
     }
 
     public void printActors() {
+        System.out.println("");
         System.out.println("Представление: "+ title);
         System.out.println("Список актеров: ");
         for (Actor actor : listOfActors) {
@@ -75,28 +76,30 @@ public class Show {
             System.out.println("Такой актер уже существует в представлении");
         }
     }
-    public boolean checkActorInShowBySurName (String searchedActor) {
+    public Actor getActorBySurName (String searchedActor){
         for (Actor actor : listOfActors) {
             if (Objects.equals(actor.getSurName(), searchedActor)) {
-                return true;
+                return actor;
             }
         }
-        return false;
+        return null;
     }
     public void changeActor(Actor newActor, String surNameReplaced) {
-        if(!checkActorInShowBySurName(surNameReplaced)){
+        System.out.println("");
+        Actor replacedActor = getActorBySurName(surNameReplaced);
+        if(replacedActor == null){
             System.out.println("Актера с фамилией " + surNameReplaced + " нет в спектакле, попробуйте еще раз.");
             return;
-        } else if (checkActorInShowBySurName(newActor.getSurName())) {
+        } else if (listOfActors.contains(newActor)) {
             System.out.println("Добавляемый актер "+ newActor.getSurnameAndName() +" уже участвует в шоу.");
             return;
         }
-        for (Actor actor : listOfActors) {
-            if (Objects.equals(actor.getSurName(), surNameReplaced)) {
-                listOfActors.remove(actor);
-                listOfActors.add(newActor);
-                return;
-            }
+        else {
+            listOfActors.remove(replacedActor);
+            listOfActors.add(newActor);
+            System.out.println("Актер "+ replacedActor.getSurnameAndName() +" заменен на "+newActor.getSurnameAndName());
         }
+
+
     }
 }
