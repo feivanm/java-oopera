@@ -17,25 +17,25 @@ public class Theatre {
         Actor actor2 = new Actor("Андрей", "Рублев", 185, Gender.MALE);
         Actor actor3 = new Actor("Анна", "Ворошилова", 165, Gender.FEMALE);
         Actor actor4 = new Actor("Андрей", "Любавин", 180, Gender.MALE);
-        Director director1 = new Director("Стивен", "Спилберг", 170, Gender.MALE, 10);
-        Director director2 = new Director("Алексей", "Балабанов", 170, Gender.MALE, 15);
-        Person musicAuthor = new Person("Андрей", "Губин", 163, Gender.MALE);
-        Person choreographer = new Person("Андрей", "Губин", 163, Gender.MALE);
+        Director director1 = new Director("Стивен", "Спилберг", Gender.MALE, 10);
+        Director director2 = new Director("Алексей", "Балабанов", Gender.MALE, 15);
+        Person musicAuthor = new Person("Андрей", "Губин", Gender.MALE);
+        Person choreographer = new Person("Андрей", "Губин", Gender.MALE);
 // Создаем спеткаль обычный и добавляем актеров через список
         ArrayList<Actor> showActors = new ArrayList<>(List.of(actor1, actor2));
         Show show = new Show("Вечерний час", 120, director2, showActors);
 // Создаем оперу и добавляем актеров
         Opera opera = new Opera("Песнь викинга", 120, director1, musicAuthor, "либрето хз что это", 10);
-        //opera.addActor(actor4);
+//opera.addActor(actor4);
         opera.addActor(actor3);
         opera.addActor(actor1);
 
-        // Создаем балет и добавляем в него актеров
+// Создаем балет и добавляем в него актеров
         Ballet ballet = new Ballet("Танец стрекозы", 120, director2, musicAuthor, "либрето хз что это 2 ", choreographer);
         ballet.addActor(actor2);
         ballet.addActor(new Actor("Николай", "Цискоридзе", 186, Gender.MALE));
 
-        // Для каждого спектакля выведите на экран список актёров.
+// Для каждого спектакля выведите на экран список актёров.
         show.printActors();
         opera.printActors();
         ballet.printActors();
